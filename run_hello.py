@@ -7,9 +7,20 @@ app = Flask(__name__)
 def hello_world():
     return "Hello World"
 
-@app.route('/<name>', methods=["GET"]) # 
+@app.route('/hello/<name>', methods=["GET"]) 
 def hello_name(name):
     return f"Hello, {name}"
+
+@app.route('/interesting/<name>', methods=["GET"]) 
+def serve_html(name):
+    return f"""
+    <html>
+    <body>
+    <h1>Hello {name}</h1>
+    <p>This is my website :)</p>
+    </body>
+    </html>
+    """
 
 # if you import this somewhere else, you dont want the flask app running
 if __name__ == "__main__":
